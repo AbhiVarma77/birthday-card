@@ -919,6 +919,79 @@
       margin-bottom: 0.9rem;
     }
 
+    /* ===== Embedded Section Photos ===== */
+    .gate-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--sunset-amber);
+      box-shadow: 0 0 20px rgba(255, 157, 66, 0.45);
+      margin: 0 auto 0.8rem;
+      display: block;
+    }
+
+    .hero-photo-badge {
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-photo-badge img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 157, 66, 0.35);
+      animation: rise 0.8s ease-out forwards;
+    }
+
+    .timeline-img {
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 0.75rem;
+      border: 1px solid rgba(255, 209, 133, 0.35);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .timeline-img:hover {
+      transform: scale(1.025);
+      box-shadow: 0 10px 25px rgba(255, 157, 66, 0.35);
+    }
+
+    .chapter-photo-wrap {
+      position: relative;
+      margin: 1.2rem 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 209, 133, 0.35);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .chapter-img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .chapter-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(11, 7, 20, 0.88) 0%, transparent 100%);
+      padding: 10px 14px;
+      font-family: 'Give You Glory', cursive;
+      color: var(--gold);
+      font-size: 1.1rem;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    }
+
     /* ===================== LETTER ===================== */
     #letter {
       background: radial-gradient(circle at 50% 20%, rgba(255, 157, 66, .12), transparent 60%);
@@ -1201,6 +1274,7 @@
   <!-- Gate -->
   <div id="gate">
     <div class="gate-card">
+      <img src="photo5.jpg" alt="Smiley" class="gate-avatar">
       <div class="gate-icon">🔒</div>
       <h2 class="gate-title">A Special Surprise</h2>
       <p class="gate-sub">Please enter the correct pin code to unlock, Smiley ❤️</p>
@@ -1228,6 +1302,9 @@
 
   <!-- Hero -->
   <section id="hero">
+    <div class="hero-photo-badge">
+      <img src="photo9.jpg" alt="Pravalika">
+    </div>
     <span class="kicker display">my dear smiley ❤️</span>
     <h1>Happy<br>Birthday</h1>
     <div class="script-line">Pravalika</div>
@@ -1247,6 +1324,7 @@
           <div class="timeline-text">I honestly had no idea how special that day would become. Meeting you led to so
             many memories, laughs, and little moments I keep thinking about. Little by little, you became someone very
             special to me, Smiley.</div>
+          <img src="photo7.jpg" alt="The Day I Met You" class="timeline-img">
         </div>
         <div class="timeline-card">
           <div class="timeline-date">6th December 2025</div>
@@ -1254,18 +1332,21 @@
           <div class="timeline-text">What I remember most isn't really the drink — it was sitting together, talking,
             laughing, enjoying the moment, and just being ourselves. Simplest moments become the memories we remember
             most.</div>
+          <img src="photo6.jpg" alt="Our First Drink Together" class="timeline-img">
         </div>
         <div class="timeline-card">
           <div class="timeline-date">18th December 2025</div>
           <div class="timeline-title">Our Bike Ride 🏍️❤️</div>
           <div class="timeline-text">Just you and me, riding together under the open sky, talking and laughing... I
             loved those little moments when I could just be beside you without needing anything else.</div>
+          <img src="photo3.jpg" alt="Our Bike Ride" class="timeline-img">
         </div>
         <div class="timeline-card">
           <div class="timeline-date">20th Dec 2025 & 10th Jan 2026</div>
           <div class="timeline-title">Temple Visits & Peace 🛕🙏</div>
           <div class="timeline-text">Chilkur Balaji and quiet moments together. It isn't always the place that makes a
             day special — it's the person you're with. And for me, Smiley, you make ordinary days beautiful.</div>
+          <img src="photo2.jpg" alt="Temple Visit" class="timeline-img">
         </div>
       </div>
     </div>
@@ -1279,6 +1360,12 @@
       <div class="chapter-box">
         <p>For me, Chennai isn't just a trip — it's one of those chapters of our story that I will always remember
           because I got to experience all of it with you.</p>
+
+        <div class="chapter-photo-wrap">
+          <img src="photo8.jpg" alt="Chennai Beach Sunset Selfie" class="chapter-img">
+          <span class="chapter-caption">Chennai Beach Sunset Selfie 🌊🌅</span>
+        </div>
+
         <p>We travelled together, explored together, walked on the beach watching the waves, visited the crocodile park,
           church, and temple. And Pondicherry... the streets, the atmosphere, the little conversations.</p>
         <p
