@@ -337,11 +337,27 @@
     }
 
     @keyframes screen-shake {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      20% { transform: translate(-8px, 6px) rotate(-1deg); }
-      40% { transform: translate(8px, -6px) rotate(1deg); }
-      60% { transform: translate(-6px, -4px) rotate(-0.5deg); }
-      80% { transform: translate(6px, 4px) rotate(0.5deg); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      20% {
+        transform: translate(-8px, 6px) rotate(-1deg);
+      }
+
+      40% {
+        transform: translate(8px, -6px) rotate(1deg);
+      }
+
+      60% {
+        transform: translate(-6px, -4px) rotate(-0.5deg);
+      }
+
+      80% {
+        transform: translate(6px, 4px) rotate(0.5deg);
+      }
     }
 
     .glitch-text {
@@ -371,56 +387,23 @@
       color: #ff4d79;
     }
 
-    .prank-card {
-      display: none;
-      background: rgba(26, 12, 38, 0.95);
-      border: 2px solid var(--sunset-amber);
-      border-radius: 20px;
-      padding: 2rem 1.6rem;
-      max-width: 26rem;
-      width: 100%;
-      color: var(--cream);
-      box-shadow: 0 0 40px rgba(255, 157, 66, 0.6);
-      animation: pop-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-
-    @keyframes pop-up {
-      0% { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .prank-emoji {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .prank-card h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      color: var(--sunset-amber);
-      margin-bottom: 0.6rem;
-    }
-
-    .secret-hint-text {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      color: var(--gold);
-      font-size: 1.1rem;
-      margin: 0.8rem 0 1.4rem;
-    }
-
-    #retry-btn {
-      width: 100%;
-      padding: 0.85rem;
+    #reboot-btn {
+      margin-top: 1.2rem;
+      padding: 0.9rem 1.8rem;
       border-radius: 14px;
-      border: none;
-      background: linear-gradient(135deg, var(--sunset-amber), #ffb3c1);
-      color: var(--ink);
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
+      border: 1px solid #ff2a5f;
+      background: rgba(255, 42, 95, 0.25);
+      color: #fff;
+      font-family: monospace;
       font-size: 1rem;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(255, 157, 66, 0.4);
+      box-shadow: 0 0 20px rgba(255, 42, 95, 0.5);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    #reboot-btn:hover {
+      background: rgba(255, 42, 95, 0.5);
+      transform: scale(1.05);
     }
 
     #gate .hint {
@@ -1226,26 +1209,21 @@
         <button id="pin-btn">Unlock ♥</button>
       </div>
       <div id="gate-error">Please enter the correct pin code 💗</div>
-      <div class="warn-note">⚠️ Note: You have <span id="attempt-count">6</span> attempts. If you enter the wrong pin 6 times, this website will crash!</div>
+      <div class="warn-note">⚠️ Note: You have <span id="attempt-count">6</span> attempts. If you enter the wrong pin 6
+        times, this website will crash!</div>
       <div class="hint">Hint: Format is (0-0-0000)</div>
     </div>
   </div>
 
-  <!-- Fake Crash Glitch Overlay -->
+  <!-- Crash Glitch Overlay -->
   <div id="crash-overlay">
     <div class="glitch-text">SYSTEM CRASHED!</div>
     <div class="crash-terminal">
       <p class="red-code">> ERR_CRITICAL_SECURITY_BREACH</p>
       <p class="red-code">> 6 FAILED PASSCODE ATTEMPTS DETECTED</p>
-      <p class="red-code">> SYSTEM SELF-DESTRUCTING IN 3... 2... 1...</p>
+      <p class="red-code">> SYSTEM HAS CRASHED & LOCKED DOWN.</p>
     </div>
-    <div id="prank-reveal" class="prank-card">
-      <div class="prank-emoji">😜❤️</div>
-      <h3>Just Kidding, Smiley!</h3>
-      <p>I would NEVER let our website crash! Here is a super hint for you:</p>
-      <p class="secret-hint-text">"It's your special birthday date! (DD-M-YYYY)"</p>
-      <button id="retry-btn">Try Again, My Smiley ♥</button>
-    </div>
+    <button id="reboot-btn">⚡ Emergency System Reboot</button>
   </div>
 
   <!-- Hero -->
@@ -1472,27 +1450,15 @@
     let failedAttempts = 0;
     const maxAttempts = 6;
 
+    const rebootBtn = document.getElementById('reboot-btn');
+
     function triggerFakeCrash() {
       crashOverlay.classList.add('active');
-      crashTerminal.style.display = 'block';
-      glitchText.style.display = 'block';
-      prankReveal.style.display = 'none';
-
-      // After 3.2 seconds of dramatic glitching/shaking suspense, reveal the sweet prank!
-      setTimeout(() => {
-        crashTerminal.style.display = 'none';
-        glitchText.style.display = 'none';
-        crashOverlay.classList.remove('active');
-        crashOverlay.style.background = 'rgba(11, 7, 20, 0.95)';
-        crashOverlay.classList.add('active');
-        prankReveal.style.display = 'block';
-      }, 3200);
     }
 
-    if (retryBtn) {
-      retryBtn.addEventListener('click', () => {
+    if (rebootBtn) {
+      rebootBtn.addEventListener('click', () => {
         crashOverlay.classList.remove('active');
-        crashOverlay.style.background = '#05020a';
         failedAttempts = 0;
         if (attemptCountEl) attemptCountEl.textContent = '6';
         pinInput.focus();
